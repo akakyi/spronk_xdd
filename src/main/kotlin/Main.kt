@@ -4,5 +4,5 @@ import ru.akakyi.spronk.inject.process.utils.PackageClassLoaderUseCase
 fun main(args: Array<String>) {
     val loader = PackageClassLoaderUseCase("ru.akakyi.test")
     val collector = ComponentClassAnnotationBeanDescriptionCollector(loader)
-    collector.getDescriptions()
+    collector.getDescriptions().forEach(::println)
 }

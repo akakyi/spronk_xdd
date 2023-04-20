@@ -5,13 +5,12 @@ import java.lang.RuntimeException
 import kotlin.reflect.KClass
 
 class PackageClassLoaderUseCase(
-    private val basePackage: String
+    private val basePackage: String,
+    private val classLoader: ClassLoader = ClassLoader.getSystemClassLoader()
 ) : CustomClassLoader {
 
     //TODO не умеет в 2 и более класса в файле и в принципе страшно и криво
     override fun execute(): Set<KClass<*>> {
-        //Вынес из конструктора дабы связность понизить. Хз, буду ли я дальше юзать именно класслодер
-        val classLoader = ClassLoader.getSystemClassLoader()
         val directory = getPackageAbsoluteDirectory(
             pack = basePackage,
             classLoader = classLoader
