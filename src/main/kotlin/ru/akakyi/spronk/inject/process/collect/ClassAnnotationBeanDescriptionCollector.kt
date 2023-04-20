@@ -39,7 +39,7 @@ class ClassAnnotationBeanDescriptionCollector(
         }.map { nameWithConstr ->
             val argsNames = nameWithConstr.constructor.parameters
                 .map { param ->
-                    param.annotations.first { it == INJECT_ANNOTATION_CLASS::class }
+                    param.annotations.first { INJECT_ANNOTATION_CLASS.isInstance(it) }
                 }.map {
                     val annotation = INJECT_ANNOTATION_CLASS.javaObjectType.cast(it)
                     annotation.name
