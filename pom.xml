@@ -6,7 +6,7 @@
     <artifactId>spronk_xdd</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spronk_xdd</name>
-    <description>Just having fun (вентилятор)</description>
+    <description>Just having fun (вентилятор) ((Я дед, пишу без ChatGPT, ибо не охота его в пете юзать))</description>
     <properties>
         <java.version>1.8</java.version>
         <kotlin.version>1.6.10</kotlin.version>
