@@ -1,6 +1,6 @@
 package ru.akakyi.spronk.inject.process.collect
 
-import ru.akakyi.spronk.inject.process.BeanDescription
+import ru.akakyi.spronk.inject.process.dto.BeanDescription
 
 interface BeanDescriptionCollector {
 

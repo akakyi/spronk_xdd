@@ -5,5 +5,6 @@ import ru.akakyi.spronk.inject.annotations.PutIn
 
 @Component(name = "CompA")
 class CompA(
-    @PutIn("CompB") compB: CompB
+    @PutIn(name = "CompBLeft") compBLeft: CompBLeft,
+    @PutIn(name = "CompB") compB: CompB
 )

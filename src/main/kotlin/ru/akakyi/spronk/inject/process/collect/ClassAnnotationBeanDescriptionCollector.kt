@@ -2,8 +2,9 @@ package ru.akakyi.spronk.inject.process.collect
 
 import ru.akakyi.spronk.inject.annotations.Component
 import ru.akakyi.spronk.inject.annotations.PutIn
-import ru.akakyi.spronk.inject.process.BeanDescription
+import ru.akakyi.spronk.inject.process.dto.BeanDescription
 import ru.akakyi.spronk.inject.process.utils.CustomClassLoader
+import java.lang.RuntimeException
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
 
@@ -39,7 +40,11 @@ class ClassAnnotationBeanDescriptionCollector(
         }.map { nameWithConstr ->
             val argsNames = nameWithConstr.constructor.parameters
                 .map { param ->
-                    param.annotations.first { INJECT_ANNOTATION_CLASS.isInstance(it) }
+                    param.annotations.firstOrNull {
+                        INJECT_ANNOTATION_CLASS.isInstance(it)
+                    } ?: throw RuntimeException(
+                        "One of parameter ${nameWithConstr.className} has no $INJECT_ANNOTATION_CLASS"
+                    )
                 }.map {
                     val annotation = INJECT_ANNOTATION_CLASS.javaObjectType.cast(it)
                     annotation.name
